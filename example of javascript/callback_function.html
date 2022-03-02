@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Callback
+    </title>
+</head>
+
+<body>
+    <h3> In this file there are different example of call back function and asynchronous you can run each code by comenting the other code.</h3>
+    <h1>Callback function Example</h1>
+    <h1>Asynchronous in javascript Example </h1>
+    <h2>Set time out is an example of asynchronous function</h2>
+    <p id="demo"></p>
+    <script>
+        //Any function that is called as an argument is called callback function
+        //A callback is a function that is to be executed after another function has finished
+        //executing hance it is called callback
+        //javascript is an event driven language. this means that instead of waiting for
+        // a response before moving on javascript will keep executing while listening for
+        //other events. therefore we have to use callback. Callback ensures when the execution of
+        // a function is completed then another function will execute.
+
+ // ---------------------------------------------------------------------------------
+
+        // Functions running in parallel with other functions are called asynchronous. A good example is JavaScript setTimeout()
+        setTimeout(myFunction, 3000);
+
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "I love You !!";
+        }
+        // In the example above, myFunction is used as a callback.
+        // myFunction is passed to setTimeout() as an argument.
+        // 3000 is the number of milliseconds before time-out, so myFunction() will be called after 3 seconds.
+// -------------------------------------------------------------------------------------------------
+
+       // Instead of passing the name of a function as an argument to another function, you can always pass a whole function instead:
+
+        setTimeout(function () { myFunction("I love You !!!"); }, 3000);
+
+        function myFunction(value) {
+            document.getElementById("demo").innerHTML = value;
+        }
+
+        // In the example above, function(){ myFunction("I love You !!!"); } is used as a callback. It is a complete function. The complete function is passed to setTimeout() as an argument.
+
+// -----------------------------------------------------------------------------------------
+
+        const FunctionA = () => {
+            setTimeout(function () {
+                console.log(`Welcome FunctionA`);
+                FunctionB();
+            }, 3000);
+        }
+        const FunctionB = () => {
+            console.log(`Welcome FunctionB`);
+        }
+        FunctionA();
+//----------------------------------------------------------------------
+
+        // JavaScript functions are executed in the sequence they are called. Here we are using #some for the sequence
+
+        function myDisplayer(some) {
+            document.getElementById("demo").innerHTML = some;
+        }
+
+        function myFirst() {
+            myDisplayer("Hello");
+        }
+
+        function mySecond() {
+            myDisplayer("Goodbye");
+        }
+
+        myFirst();
+        mySecond();
+
+//-----------------------------------------------------------------------
+
+        // example of call back function
+
+        const perOne = (Friend, callFriend) => {
+            console.log(`i am busy right now. I am talking to ${Friend}. I will call you back.`);
+            callFriend();
+        }
+        const perTwo = () => {
+            console.log(`Hey whats up i call back you`);
+        }
+        perOne("Palkesh", perTwo);
+
+// ------------------------------------------------------------------------------
+        // The print( ) function takes another function as a parameter and calls it inside. This is valid in JavaScript and we call it a “callback”. So a function that is passed to another function as a parameter is a callback function.
+        function print(callback) {
+            callback();
+        }
+// --------------------------------------------------------------------------------
+
+        // Using a callback, you could call the calculator function (myCalculator) with a callback, and let the calculator function run the callback after the calculation is finished:
+        function myDisplayer(something) {
+            document.getElementById("demo").innerHTML = something;
+        }
+
+        function myCalculator(num1, num2, myCallback) {
+            let sum = num1 + num2;
+            myCallback(sum);
+        }
+
+        myCalculator(5, 5, myDisplayer);
+
+        // In the example above, myDisplayer is the name of a function.
+        // It is passed to myCalculator() as an argument.
+
+
+    </script>
+</body>
+
+</html>

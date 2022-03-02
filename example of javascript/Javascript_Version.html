@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Redeclaring a Variable Using let</h2>
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo5"></p> 
+<p id="demo4"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<script>
+
+    // How to use a JavaScript Class.
+class Car {
+  constructor(name, year, color, cost) {
+    this.name = name;
+    this.year = year;
+    this.color = color;
+    this.cost = cost;
+  }
+}
+
+const myCar1 = new Car("Ford", 2014, "red","80lakh" );
+const myCar2 = new Car("BMW", 2010, "Black","70lakh" );
+// const myCar2 = new Car("BMW", 2019, "black", "75k");
+document.getElementById("demo").innerHTML = "The name of the car is:" +
+myCar1.name + " which is manufactured in year " + myCar1.year + " have awesome features and " + myCar2.color + " color but include the high cost approx. " + myCar2.cost;
+
+
+// Default Parameter Values
+function myFunction(x, y = 10) {
+  // y is 10 if not passed or undefined
+  return x + y;
+}
+document.getElementById("demo1").innerHTML = myFunction(5);
+
+
+// rest parameter (...) allows a function to treat an indefinite number of arguments as an array
+function sum(...args) {
+  let sum = 1;
+  for (let arg of args) sum += arg;
+  return sum;
+}
+let x = sum(4, 9, 16, 25, 29, 100, 66, 77);
+document.getElementById("demo3").innerHTML = x;
+
+
+// includes() method returns true if a string contains a specified value, otherwise false
+let text = "Hello world, welcome to the universe.";
+document.getElementById("demo2").innerHTML = text.includes("world");
+
+
+
+// The for of statement loops through the values of any iterable object
+const value = ["BMW", "Volvo", "Mini"];
+let pro = "";
+for (let z of value) {
+  pro += z + "<br>";
+}
+document.getElementById("demo5").innerHTML = pro;
+
+//The Array.from() method returns an Array object from any object with a length property or any iterable object.
+const myArr = Array.from("ABCDEFG");
+document.getElementById("demo4").innerHTML = myArr;
+
+// Array.keys() method returns an Array Iterator object with the keys of the array.
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+const keys = fruits.keys();
+
+let para = "";
+for (let x of keys) {
+  para += x + "<br>";
+}
+document.getElementById("demo6").innerHTML = para;
+
+// find() method returns the value of the first array element that passes a test function.
+const numbers = [4, 9, 16, 25, 29];
+let first = numbers.find(myFunction);
+
+document.getElementById("demo7").innerHTML = "First number over 18 is " + first;
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+
+// The findIndex() method returns the index of the first array element that passes a test function.
+const edit = [4, 9, 16, 25, 29];
+
+document.getElementById("demo8").innerHTML = "First number over 18 has index " + edit.findIndex(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+
+// The entries() method returns an Array Iterator object with key/value pairs
+const juice = ["Banana", "Orange", "Apple", "Mango"];
+const f = juice.entries();
+
+for (let x of f) {
+  document.getElementById("demo9").innerHTML += x + "<br>";
+}
+// Object.entries() method returns an string and Iterator object with key/value pairs.
+const papaya = "Banana";
+const k = Object.entries(papaya);
+
+for (let x of k) {
+  document.getElementById("demo10").innerHTML +=  x + "<br>";
+}
+
+</script>
+
+</body>
+</html>

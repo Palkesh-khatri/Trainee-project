@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery Datatable Example</title>
+    <link rel='stylesheet prefetch' href='https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css'>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="C:\Users\DEV-97\Desktop\Palkesh\music\music\Datatable.js"></script>
+
+</head>
+
+<body>
+    <table id="example" class="display" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>mobile no.</th>
+                <th>email ID</th>
+                <th>User name</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="body1"></tbody>
+        <tfoot>
+            <tr>
+                <th>User ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>mobile no.</th>
+                <th>email ID</th>
+                <th>User name</th>
+
+
+            </tr>
+        </tfoot>
+
+    </table>
+
+
+
+    <script>
+        var userid = sessionStorage.getItem("userId");
+        var token = sessionStorage.getItem("access_token");
+        var table;
+
+        function initTable(data) {
+            table = $('#example').DataTable({
+                        // data: data.data.users,
+                        "processing": true,
+                        "serverSide": true,
+                        "ajax": {
+                            "url": "http://192.168.0.67/NetCoreAPI/api/home/users",
+                            type: "get", //send it through get method
+                            headers: {
+                                Authorization: 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjZDgxYWUwMC1iOWM1LTQ3ZjYtOTgwNi05M2MxMWQ3YTlkMmIiLCJ1c2VyIjoie1widXNlcklEXCI6NzMsXCJuYW1lXCI6XCJoaW1hbnNodVwifSIsIm5iZiI6MTY0NjA0ODUwOSwiZXhwIjoxNjQ2MTM0OTA5LCJpYXQiOjE2NDYwNDg1MDl9.bHow07dN6JB_JPTIJgNCCm9byAQhAor_ZwQAhMDOO0w",
+                            },
+                            data,
+                            // "dataSrc": "data.users",
+                             "dataSrc": function ( json ) {
+                                // json.data.users.recordsTotal = 80;
+                                // json.data.users.recordsFiltered = 10;
+                                // json.data.users.draw = 1;
+                                // json.data.users.pageNo = 1;
+                                // json.data.users.pageNo = 1;
+
+                                return json.data.users;
+                            }
+                        },
+                        columns: [
+                            { data: "userID" },
+                            { data: "firstName" },
+                            { data: "lastName" },
+                            { data: "mobileNo" },
+                            { data: "emailID" },
+                            { data: "userName" },
+                            // { data: "salary", render: $.fn.dataTable.render.number(',', '.', 0, '$') }
+
+                        ]
+
+                    });
+
+        //             table.on( 'page.dt',   function (page) { 
+        //                 var info = table.page.info();
+        //                 // console.log('Showing page: '+info.page+' of '+info.pages );
+        //                 initTable({ 
+        //                     pageNo: info.page,
+        //                     pageSize: 10
+        //                 });
+        //                 console.log('page', page);
+        //              } )
+
+        }
+        
+        // initTable({ 
+        //                         pageNo: 2,
+        //                         pageSize: 10
+        //                     })
+        // serverSide: true,
+
+            // fetch("http://192.168.0.67/NetCoreAPI/api/home/users?pageNo=1&pageSize=10", {
+            //     headers: {
+            //         Authorization: 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlZDZiMzFlNC1lZWVkLTRlNDYtYjAzMS03MjBlMzZmZDZhNTUiLCJ1c2VyIjoie1widXNlcklEXCI6NzMsXCJuYW1lXCI6XCJoaW1hbnNodVwifSIsIm5iZiI6MTY0NTc2ODAyNiwiZXhwIjoxNjQ1ODU0NDI2LCJpYXQiOjE2NDU3NjgwMjZ9.ReECD9a9E7mR7hS70gGX7A6_bZX_T2uHA3khtoFfe5Q",
+            //     }
+            // })
+            //     .then((res) => res.json())
+            //     .then((data) => {
+            //         console.log(data.data.users)
+            //         data.data.users.map((user) => {
+            //             //     $("#body1").append(`
+
+            //             // <tr>
+            //             //     <td>${user.userID}</td>
+            //             //     <td>${user.firstName}</td>
+            //             //     <td>${user.lastName}</td>
+            //             //     <td>${user.mobileNo}</td>
+            //             //     <td>${user.emailID}</td>
+            //             //     <td>${user.userName}</td>  
+            //             //  </tr>
+            //             // `)
+            //         });
+                    
+                
+                // });
+    </script>
+</body>
+
+</body>
+
+</html>

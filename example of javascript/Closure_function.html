@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Closure Example</title>
+    </head>
+    <body>
+        <!--when we create a inner function in a outer function than inner function-->
+        <!--can access variables and parameters of outer function also can access global variables-->
+        <!--than this inner function becomes closure function-->
+        <!--Here we are calling outer function and outer fun. returning inner func.-->
+        <h1>This is the Example of closure function</h1>
+        <script>
+            const outerFunction = (a) => {
+                let b = 10;
+                const innerFunction = () => {
+                    let sum = a + b;
+                    console.log(`the sum of two numbers is ${sum}.`);
+                }
+               return innerFunction
+            }
+            let inner = outerFunction(5);
+            //here in inner variable we assign outer function, when calling inner variable as function 
+            //it calls outer function 
+            console.dir(inner);
+            inner();
+        </script>
+    </body>
+</html>

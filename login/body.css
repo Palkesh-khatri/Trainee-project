@@ -1,0 +1,114 @@
+body {
+			font-family: "Trebuchet MS", Helvetica, sans-serif;
+		}
+		a {
+			text-decoration: none;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		table, th, td {
+		   border: 1px solid #bbb;
+		   text-align: left;
+		}
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+		th {
+			background-color: #ddd;
+		}
+		th,td {
+			padding: 5px;
+		}
+		button {
+			cursor: pointer;
+		}
+		/*Initial style sort*/
+		.tablemanager th.sorterHeader {
+			cursor: pointer;
+		}
+		.tablemanager th.sorterHeader:after {
+			content: " \f0dc";
+			font-family: "FontAwesome";
+		}
+		/*Style sort desc*/
+		.tablemanager th.sortingDesc:after {
+			content: " \f0dd";
+			font-family: "FontAwesome";
+		}
+		/*Style sort asc*/
+		.tablemanager th.sortingAsc:after {
+			content: " \f0de";
+			font-family:"FontAwesome";
+		}
+		/*Style disabled*/
+		
+		#for_numrows {
+			padding: 10px;
+			float: left;
+		}
+		#for_filter_by {
+			padding: 10px;
+			float: right;
+		}
+		#pagesControllers {
+			display: block;
+			text-align: center;
+		}
+
+		#example_paginate {
+			text-align: end;
+			/* margin-top: -25px; */
+		}
+
+		#example_filter {
+			text-align: end;
+			/* margin-top: -25px; */
+		}
+
+		.sorting_asc {
+			background: url(../images/sort_asc.png) no-repeat center right;
+		}
+
+		#pagesControllers {
+			display: block;
+			text-align: center;
+		}
+		#edit{
+			text-align: end;
+		}
+
+		#div1{
+			margin-top: -15px;
+			margin: bottom 0em;
+			margin-bottom: 0rem! important;
+		}
+        .mb-3{
+	margin-left: 29pc;
+}
+     .mb-1{
+	text-align: center;
+}
+/* .mb-2{
+	margin-left: 20pc ;
+} */
+#lord{
+	margin-right: 40pc;
+}
+
+		
+
+		/* table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em; */

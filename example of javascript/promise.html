@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Promise</title>
+</head>
+
+<body>
+
+     <!-- Create a Promise
+To create a promise object, we use the Promise() constructor.
+
+let promise = new Promise(function(resolve, reject){
+});
+
+The Promise() constructor takes a function as an argument. The function also accepts two functions resolve() and reject().
+If the promise returns successfully, the resolve() function is called. And, if an error occurs, the reject() function is called.-->
+
+</body>
+
+<script>
+
+    // for success
+
+let promise = new Promise(function(resolve, reject){
+    let a = 1 + 1
+    if(a == 2){ 
+        resolve ('success')
+    }
+    else{
+        reject ('failed')
+    }
+});
+promise.then((message) =>{
+    console.log('this is in the then' + message)
+}).catch((error)=>{
+    console.log('this is in the catch' + error)
+})
+
+// -----------------------------------------------------------
+//for failed by using the arrow function
+
+let p = new promise((resolve, reject) => {
+let a = 1 + 2
+if(a == 2){ 
+        resolve ('success')
+    }
+    else{
+        reject ('failed')
+    }
+});
+promise.then((message) =>{
+    console.log('this is in the then' + " " + message)
+}).catch((error)=>{
+    console.log('this is in the catch' + " " + error)
+})
+
+
+</script>
+</body>
+
+</html>

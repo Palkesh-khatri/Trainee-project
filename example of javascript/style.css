@@ -1,0 +1,120 @@
+.div2{
+    width: fit-content;
+  } 
+  img{
+    width: 50%;
+    height: 50%;
+    margin-left: 40%;
+  }   
+        
+         
+         
+  
+                  
+                .table1
+                   {
+                       width: 50%;
+                       border-style: hidden;
+                       margin-left: 20%;
+                   }
+
+                   .div4
+                   {
+                       margin-right: 5%;
+                   }
+  
+  
+                   h2
+                   {
+                    margin-left: 5%;
+                   }
+  
+                  
+                       
+                  
+                  
+        body
+        {
+          background-image: url(images.jpg); background-repeat: no-repeat; background-size: cover;
+          
+        }   
+  
+        div
+        {
+            background-size: contain;
+            width: 50%;
+            background-color:ghostwhite;
+            margin-left: 30%;
+            
+        }
+        
+        
+  
+        .input1
+        {
+            width: 95%;
+            margin-left: 0%;
+            
+        }
+
+        label.error
+        {
+            color: red;
+        }
+        input.error{
+            border-color: red;
+        }
+  
+        input
+        {
+            width: 65px;
+        }
+        
+        h2
+        {
+            
+            margin-left: 5%;
+        }
+
+
+    .btn
+    {
+        margin-bottom: 10%; 
+        margin-top: 10%;
+        margin-left: 50%; 
+        padding: 2%;
+    }
+  
+  
+        .table{
+          margin: 0px auto;
+        border: 1px solid black; border-collapse: collapse;
+        width: 50%;
+        }
+  
+      
+  
+      .th1
+        {
+          border: 1px solid black;
+          border-collapse: collapse;
+          width: 45px;
+          
+        }
+  
+      .td1
+        {
+          border: 1px solid black;
+          border-collapse: collapse;
+          
+        }
+
+        button
+        {
+            margin-left: 30%;
+        }
+
+        .div4
+        {
+            margin-left: 20%;
+        }

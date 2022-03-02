@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Arrow Function</title>
+</head>
+
+<body>
+    <!-- 
+    Arrow functions, introduced in ES6, provides a concise way to write functions in JavaScript. 
+    Another significant advantage it offers is the fact that it does not bind its own this. 
+    In other words, the context inside arrow functions is lexically or statically defined.
+     ES6 stands for ECMAScript 6 (European Computer Manufacturers Association Script))
+     ECMAScript was created to standardize JavaScript,and ES6 is the 6th version of ECMAScript, 
+     it was published in 2015, and is also known as ECMAScript 2015.-->
+
+    <script>
+        //function expression
+        function display() {
+            document.write("<h1>Hello Everyone !!!</h1>")
+        }
+        display()
+        // -----------------------------------------------------------------------
+        //anonymous function
+        var myfunc = function () {
+            document.write("<h1>Anonymous function</h1>")
+        }
+        myfunc()
+
+
+        // Arrow function expression has a shorter syntax compared to function expression.
+        // Arrow functions are always anonymous.
+        // Syntax: ()=> (statements);
+
+        welcome = () => "<h1>Hello World!!!</h1>"
+
+        document.write(welcome())
+
+        //argument passing
+
+        // -------------------------------------------------------------------------------------
+        // Traditional Anonymous Function
+        // function1(a); {
+        //     return a + 100;
+        // }
+        // // Arrow Function Break Down
+
+        // // 1. Remove the word "function" and place arrow between the argument and opening body bracket
+        // (a) => {
+        //     return a + 100;
+        // }
+
+        // // 2. Remove the body braces and word "return" -- the return is implied.
+        // (a) => a + 100;
+
+        // // 3. Remove the argument parentheses
+        // a => a + 100;
+
+        // document.write(a)
+
+        // --------------------------------------------------------------------
+        //function expression
+        function square(n) {
+            return n * n
+        }
+        document.write("<h1>Square is :" + square(8) + "</h1>")
+
+        //------------------------------------------------------------------------
+        square = (n) => {
+            return n * n
+        }
+        document.write("<h1>Square is :" + square(9) + "</h1>")
+
+        // ------------------------------------------------------------------------
+        // You can only omit the #return keyword and the curly brackets{} and paranthesis()
+        // if the function is a single statement. Because of this, it might be a good habit to always keep them:
+        square = n => n * n;
+        document.write("<h1>Square is :" + square(12) + "</h1>")
+        //---------------------------------------------
+
+        //argument passing in arrow function
+        const cube = x => x * x * x
+
+        document.write("<h1>Cube is :" + cube(4) + "</h1>")
+
+        //arrow function with default parameter
+        var func1 = (a, b = 20) => {
+            document.write("<h1>a is:" + a + " b is:" + b + "<br>")
+        }
+        func1(12, 12)
+        //-------------------------------------------------
+
+        //arrow function with rest parameters 
+        var func2 = (a, ...args) => {
+            document.write(a + "," + args + "<br>")
+        }
+        func2(100, 10, 20, 30, 40, 50, 60)
+        //----------------------------------------------------------
+
+        //arrow function with if else
+        calculate = (x, y) => {
+            if (x > y) {
+                return x
+            } else {
+                return y
+            }
+        }
+
+        add = (x, y) => { return x + y };
+        document.write("<h1>Addition is:" + add(12, 12) + "</h1>")
+        //---------------------------------------------------------------
+
+        //passing multiple arguments
+        // getStudentDetails=(name,rollno,course,fees)=>{
+        //     return name+" "+rollno+" "+course+" "+fees 
+        // }
+
+        getStudentDetails = (name, rollno, course, fees) => (
+            name + " " + rollno + " " + course + " " + fees
+        )
+
+        document.write("<h1>" + getStudentDetails("Neha Sharma", 12121, "BBA", 34567.343) + "</h1>")
+
+// --------------------------------------------------------------------------
+        var arr = [5, 6, 13, 0, 1, 18, 23];
+
+        var sum = arr.reduce((a, b) => a + b);
+        // 66
+        document.write("<h1>Addition is:" + sum + "</h1>")
+
+        var even = arr.filter(v => v % 2 == 0);
+        // [6, 0, 18]
+        document.write("<h1>even is:" + even + "</h1>")
+
+        var double = arr.map(v => v * 2);
+        // [10, 12, 26, 0, 2, 36, 46]
+        document.write("<h1>product is:" + double + "</h1>")
+// --------------------------------------------------------------------------
+
+// Arrow functions provide better syntax to write promises and callbacks. For example
+// ES6
+asyncFunction()
+.then(() => asyncFunction1())
+.then(() => asyncFunction2())
+.then(() => finish)
+// -------------------------------------------------------------------------
+
+// You should not use arrow functions to create methods inside objects.
+let person = {
+    name: 'Jack',
+    age: 25,
+    sayName: () => {
+
+        // this refers to the global .....
+        //
+        console.log(this.age);
+    }
+}
+
+person.sayName(); // undefined
+// ------------------------------------------------------------------------
+
+//  You cannot use an arrow function as a constructor. For example,
+let Foo = () => {};
+let foo = new Foo(); // TypeError: Foo is not a constructor
+
+// ----------------------------------------------------------------------
+
+// const arr = [1, 2, [3, 4]];
+// arr.reduce((acc, val) => acc.concat(val), []);
+
+
+
+    </script>
+</body>
+
+</html>
