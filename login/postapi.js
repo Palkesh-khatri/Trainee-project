@@ -1,20 +1,12 @@
 $(document).ready(function () {
 
     // console.log("hello");
-
     $("#login").submit(function (event) {
-
-
-        event.preventDefault();
-        
-
+        event.preventDefault();     
         // console.log("status" + $("#login").valid());
         // Stop form from submitting normally
 
-
-
         if ($("#login").valid()) {
-
 
             // Stop form from submitting normally
             // event.preventDefault();
@@ -49,7 +41,7 @@ $(document).ready(function () {
 
                     sessionStorage.setItem("access_token", obj.data.access_token);
                     sessionStorage.setItem("userId", obj.data.userId);
-                    window.location.href = "clientside.html";
+                    window.location.href = "file:///E:/synsoft/Project/Trainee-project/Trainee-project/Upload%20image/imageupload.html";
                     // window.location.href = "randomuser.html";
                     // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- - > here you can proceed to get the data  
                 },
@@ -68,6 +60,7 @@ $(document).ready(function () {
                 }
             });
             event.preventDefault();
+            
         }
     });
 });

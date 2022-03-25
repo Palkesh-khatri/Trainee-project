@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TextAre</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <style>
+        label.error {
+            color: red;
+        }
+        .container{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 align="center">Text Area Validation with limitation of words</h2>
+    <section>
+        <div class="container">
+            <form id="form1">
+                <textarea name="message" id="message" type="text" value="" rows="10" cols="90" dir="ltr">
+                </textarea><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+</body>
+<script>
+    $(document).ready(function () {
+        $("#form1").validate({
+            rules: {
+                message: {
+                    required: true, 
+                    minlength: 50,
+                    maxlength: 2000,
+                    lettersonly: true
+                }
+            },
+            messages: {
+                required: "Please Enter Text here",
+                minlength: "Please enter minimum 50 letters",
+                maxlength: "Maximum length achieved...you can not enter letters more than 2000",
+                lettersonly: "Please enter letters only"
+
+            }
+
+        })
+    })
+
+</script>
+
+
+</html>

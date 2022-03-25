@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>shallow equalityn</title>
+</head>
+
+<body>
+    <p></p>During shallow equality check of objects you get the list of properties (using Object.keys()) of both
+    objects, then check the properties' values for equality..</p>
+</body>
+
+<script>
+    function shallowEqual(object1, object2) {
+        const keys1 = Object.keys(object1);
+        const keys2 = Object.keys(object2);
+        if (keys1.length !== keys2.length) {
+            return false;
+        }
+        for (let key of keys1) {
+            if (object1[key] !== object2[key]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    // Inside the function, keys1 and keys2 are arrays containing correspondingly the property names of object1 and object2.
+    // for cycle iterates over the keys, and compares each property of object1 and object2 for equality object1[key] !== object2[key]
+
+    const hero1 = {
+        name: 'Batman',
+        realName: 'Bruce Wayne'
+    };
+    const hero2 = {
+        name: 'Batman',
+        realName: 'Bruce Wayne'
+    };
+    const hero3 = {
+        name: 'Joker'
+    };
+    shallowEqual(hero1, hero2); // => true
+    shallowEqual(hero1, hero3); // => false
+
+    // shallowEqual(hero1, hero2) returns true because the objects hero1 and hero2 have the same properties (name and realName) with the same values.
+    // On the other side, shallowEqual(hero1, hero3) returns false since hero1 and hero3 have different properties.
+    // If the properties' values of objects to compare are primitive values, the shallow equality check is the way to go.
+
+</script>
+
+</html>

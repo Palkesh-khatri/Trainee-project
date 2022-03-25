@@ -12,23 +12,44 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 
-    <script src="E:\synsoft\sign_up\bootstrap form\material_form.css"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- <script src="E:\synsoft\sign_up\bootstrap form\material_form.css"></script> -->
+    <style>
+        #display_image {
+            width: 200px;
+            height: 125px;
+            border: 1px solid black;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
 
 </head>
 
 <body class="bg-image" style="background-image: url('music7.png'); background-size: cover;">
     <div class="container">
 
-        
-        <form class=" well form-horizontal" action=" " method="post" id="contact_form">
+
+        <form class=" well form-horizontal" action="" method="HTTP_METHOD" id="contact_form"
+            enctype="multipart/form-data">
             <fieldset>
 
                 <!-- Form Name -->
-                <legend>
-                    <center>
-                        <h2><b>Music Subscription</b></h2>
-                    </center>
-                </legend><br>
+                <div class="row">
+                    <div class="col-md-10">
+                        <legend>
+                            <center>
+                                <h2><b>Music Subscription</b></h2>
+                            </center>
+                        </legend>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="file" name="userPicture" id="image_input" />
+                        <div class="rounded-circle" id="display_image"></div>
+                    </div>
+                </div>
+
 
                 <!-- Text input-->
 
@@ -84,72 +105,53 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Password</label>
-                    <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input name="user_password" placeholder="Password" class="form-control" type="password">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text input-->
-
-
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Department</label>
-                    <div class="col-md-4 selectContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                            <select name="department" class="form-control selectpicker">
-                                <option value="">Select your Department</option>
-                                <option>Department of Engineering</option>
-                                <option>Department of Agriculture</option>
-                                <option>Accounting Office</option>
-                                <option>Department of science</option>
-                                <option>Department of management</option>
-                                <option>Department of Aviation</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Course</label>
-                    <div class="col-md-4 selectContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                            <select name="department" class="form-control selectpicker">
-                                <option value="">Course Applied for</option>
-                                <option>React</option>
-                                <option>Jave</option>
-                                <option>Phython</option>
-                                <option>Php</option>
-                                <option>Node js</option>
-                                <option>mongo DB</option>
-                                <option>Dot net</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Button -->
                 <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-4"><br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit"
-                            class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button id="submit"
+                            type="submit" class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span
                                 class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
                     </div>
                 </div>
-
             </fieldset>
-            </form>
-        </div>
-    
-    </div><!-- /.container -->
+        </form>
+    </div>
+
 </body>
+<script>
+    // const image_input = document.querySelector("#image_input");
+    // var uploaded_image;
+
+    // image_input.addEventListener('change', function () {
+    //     const reader = new FileReader();
+    //     reader.addEventListener('load', () => {
+    //         uploaded_image = reader.result;
+    //         document.querySelector("#display_image").style.backgroundImage = `url(${uploaded_image})`;
+    //     });
+    //     reader.readAsDataURL(this.files[0]);
+    // });
+
+    const form = document.querySelector("form");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        data.append('name', 'Image Upload');
+        console.log("file")
+        axios
+            .post("http://192.168.0.67/NetCoreAPI/api/home/upload_profile", data, {
+                headers: {
+                    Authorization: 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3MzljOTJmYS0zNWJiLTRkMDMtYjUxMi0yMGU4NzIzMzI1N2EiLCJ1c2VyIjoie1widXNlcklEXCI6MzEsXCJuYW1lXCI6XCJwYWxrZXNoXCJ9IiwibmJmIjoxNjQ4MTkxMjg1LCJleHAiOjE2NDgyNzc2ODUsImlhdCI6MTY0ODE5MTI4NX0.n04N4HRdMdoMyoiJidPrftwZKazNtems443iM7XYGCo"
+                },
+            })
+        console.log("data", data.data.url)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    });
+
+</script>
+
 </html>

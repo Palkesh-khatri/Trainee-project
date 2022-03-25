@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-sart;
+  }
+  
+  .heightKepper {
+    width: 1px;
+    margin-right: -1px;
+  }
+  
+  .textarea {
+    overflow: hidden;
+    flex-grow: 1; 
+    resize: none;
+  }

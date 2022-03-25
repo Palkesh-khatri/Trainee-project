@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+
+
+
+  <!DOCTYPE html>
 <html>
 
 
@@ -26,7 +29,9 @@
         <div class="card shadow-2-strong">
 
             <div id="edit">
-                <a href="index.html"><button class="btn btn-primary btn-lg btn-block">Edit
+                <a href="E:\synsoft\Project\Trainee-project\Trainee-project\Model PopUp\modelpopwithsidebar.html"><button class="btn btn-primary btn-lg btn-block">back
+                </button></a> 
+                <a href="E:\synsoft\Project\Trainee-project\Trainee-project\main page\index.html"><button class="btn btn-primary btn-lg btn-block">Edit
                         profile</button></a>
             </div>
             
@@ -74,14 +79,14 @@
 
             </div>
         </div>
-    </div>
+    </div> 
 </div>
 </body>
 
 <script>
     fetch("http://192.168.0.67/NetCoreAPI/api/home/users?pageNo=1&pageSize=10", {
         headers: {
-            Authorization: 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI4ZTAyN2Q4ZS04NWYyLTRkMzMtODAzMi1mN2JjMDVhNjM2YzUiLCJ1c2VyIjoie1widXNlcklEXCI6MzEsXCJuYW1lXCI6XCJoaW1hbnNodVwifSIsIm5iZiI6MTY0NDkxMTI1MCwiZXhwIjoxNjQ0OTk3NjUwLCJpYXQiOjE2NDQ5MTEyNTB9.U4Ki9D_bZzYLjODrFMAF9nzjz-WqW5o1lcDJH2S_PNg",
+            Authorization: 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1NmVlZGI0OS1jYTY3LTQ2ZWItYjIzZS00MDY2MzFlZDBhYzQiLCJ1c2VyIjoie1widXNlcklEXCI6MzEsXCJuYW1lXCI6XCJEZWFkXCJ9IiwibmJmIjoxNjQ2OTk2MzMxLCJleHAiOjE2NDcwODI3MzEsImlhdCI6MTY0Njk5NjMzMX0.TKoNrsHfE4wEFyQxOSnxwFP6BNA9Q4XDPle7MEW4TBk",
         }
     })
         .then((res) => res.json())

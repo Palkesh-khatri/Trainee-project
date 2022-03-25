@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="imageupload.js"></script>
+
+    <link rel="stylesheet" href="E:\synsoft\Project\Trainee-project\Trainee-project\clientside datatable\body.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <script src="E:\synsoft\Project\Trainee-project\Trainee-project\clientside datatable\tablemanager.js"></script>
+
+    <!-- cdn for model popup -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+    <title>Upload Image</title>
+    <style>
+        .modal-header {
+            background: #F7941E;
+            color: #fff;
+        }
+
+        .required:after {
+            content: "*";
+            color: red;
+        }
+
+        label.error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row mt-3">
+        <div class=" col-sm-9 justify-content end">
+            <div id="div1" class="text-center">
+                <img src="react.png" style="width: 90px;">
+                <h3 class="mb-1 mt-1"><strong>Music Subscriber</strong></h3>
+            </div>
+        </div>
+        <div class="dropdown col-sm-3 ">
+            <ul class="dropdown-menu" id="drop">
+                <li><a class="dropdown-item"
+                        href="E:\synsoft\Project\Trainee-project\Trainee-project\Model PopUp\modelpopwithsidebar.html">Homepage</a>
+                </li>
+                <li><a class="dropdown-item Disabled" href="#">Dashboard</a></li>
+                <li><a class="dropdown-item active" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#myModal"
+                        onclick="divshow()" href="#">Edit profile</a></li>
+                <li><a class="dropdown-item active"
+                        href="E:\synsoft\Project\Trainee-project\Trainee-project\login\login.html">Logout</a></li>
+            </ul>
+            <img align="right" class="w-50 p-3 rounded-circle" id="imagePreview" src="avatar.png"
+                onclick="dropdown()" />
+        </div>
+    </div>
+
+    <!-- model popup -->
+    <div class="container mt-2" id="abc">
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Update Profile</h5>
+                        <button type="button" class="btn-close" id="close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="find" method="">
+                            <div>
+                                <label class="form-label required">First
+                                    Name</label>
+                                <input type="text" class="form-control" id="fname" name="fname">
+                            </div>
+                            <div>
+                                <label class="form-label required">Last name</label>
+                                <input type="text" class="form-control" id="lname" name="lname">
+                            </div>
+                            <div>
+                                <label class="form-label required">Email</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+                            <div>
+                                <label class="form-label required">Mobile No.</label>
+                                <input type="number" class="form-control" id="phone" name="phone">
+                            </div>
+                            <div>
+                                <label class="form-label required">User Name</label>
+                                <input type="email" class="form-control" id="uname" name="uname">
+                            </div>
+                            <div>
+                                <label class="form-label required">Profile picture</label>
+                                <input type="file" name="userPicture" id="userPicture" onchange="loadFile(event)" />
+                            </div>
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-primary" id="but">Submit</button>
+                                <button type="submit" class="btn btn-danger">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- model popup -->
+
+    <!-- Datatable -->
+    <div class="" id="edit">
+        <div class="align-items-center">
+            <table class="tablemanager" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>mobile no.</th>
+                        <th>email ID</th>
+                        <th>User name</th>
+                    </tr>
+                </thead>
+                <tbody id="body1"></tbody>
+                <tfoot>
+                    <tr>
+                        <th>User ID</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>mobile no.</th>
+                        <th>email ID</th>
+                        <th>User name</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    </div><!-- Datatable -->
+</body>
+<script>
+
+    // var profileimage = ""
+    var loadFile = function (event) {
+        var image = document.getElementById('imagePreview');
+        image.src = URL.createObjectURL(event.target.files[0]);
+        // profileimage = event.target.files[0].name;
+        // uploadprofile();
+
+    };
+    var userid = sessionStorage.getItem("userId");
+    var token = sessionStorage.getItem("access_token");
+
+    // update the profile by using the  update API and we need to submit the url manually to update the profile pic
+    $(document).ready(function () {
+        $("#find").submit(function (event) {
+            if ($("#find").valid()) {
+
+                var first = $("#fname").val();
+                var last = $("#lname").val();
+                var email = $("#email").val();
+                var mobile = $("#phone").val();
+                var user = $("#uname").val();
+                var picture = $("#imagePreview").val();
+                console.log("picture", picture)
+                $.ajax({
+                    url: 'http://192.168.0.67/NetCoreAPI/api/home/updateuser_profile/' + userid,
+                    type: 'PATCH',
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "bearer " + token);
+                    },
+
+                    //JSON.stringify sonver the object into string because we can send the data to the server only in string form.
+                    data: JSON.stringify({
+                        "firstName": first,
+                        "lastName": last,
+                        "MobileCode": "+91",
+                        "mobileNo": mobile,
+                        "email": email,
+                        "userName": user,
+                        "gender": "male",
+                        "dob": "1997-01-10",
+                        "birthTime": "03:07:37.6746130",
+                        // "relationshipID": 1,
+                        "educationID": 3,
+                        "hobbies": [
+                            1,
+                            3
+                        ],
+                        "address": "Vijaynagar",
+                        "state": "mp",
+                        "city": "indore",
+                        "country": "india",
+                        "pincode": 452010,
+                        "isAdult": true,
+                        "profilePicURL": "/Uploads/Profile/73d37d530a2e4325a4fe05686062b13c_O_.jpg",
+                        "thumbnailURL": "/Uploads/Profile/ea5c4f8d18844c77b0e50ee2ebd5675e_T_.jpg"
+                    }),
+                    success: function (data, textStatus, xhr) {
+                        console.log("submitdata", data);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log('Error in Database');
+                        console.log("error " + xhr.responseText);
+                    }
+                });
+                console.log('HELLO')
+                event.preventDefault();
+            }
+        })
+    })
+    // hiding the model popup form after updating.
+    $('#but').click(function () {
+        $('#myModal').modal('hide');
+    });
+    // onclick function show the model popup.
+    function divshow() {
+        document.getElementById('abc').style.display = "block";
+        document.getElementById('drop').style.display = "none";
+    }
+    function dropdown() {
+        document.getElementById('drop').style.display = "block";
+    }
+
+    // Reload the modelpopup on clicking close button.
+    $('#close').click(function () {
+        location.reload();
+    })
+
+    // function uploadprofile() {
+    //     const form = document.querySelector("form");
+
+    //     form.addEventListener("submit", (e) => {
+    //         e.preventDefault();
+    //         const data = new FormData(form);
+    //         data.append('name', 'Image Upload');
+    //         console.log("file")
+    //         axios
+    //             .post("http://192.168.0.67/NetCoreAPI/api/home/upload_profile", data, {
+    //                 headers: {
+    //                     Authorization: 'Bearer ' + token
+    //                 },
+    //             })
+    //         console.log("data", data.data.url)
+    //             .then((res) => {
+    //                 console.log(res);
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err);
+    //             });
+    //     });
+    // }
+
+
+</script>
+
+</html>

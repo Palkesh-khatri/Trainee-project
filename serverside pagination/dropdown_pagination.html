@@ -39,14 +39,14 @@
             </tr>
         </tfoot>
     </table>
-   
+
     <div id="dew">
         <button class="first" onclick="mydata(1)">1</button>
         <button class="second" onclick="mydata(2)">2</button>
         <button class="third" onclick="mydata(3)">3</button>
         <button class="fourth" onclick="mydata(4)">4</button>
-        <button class="fivth"onclick="mydata(5)">5</button>
-        <button class="sixth"onclick="mydata(6)">6</button>
+        <button class="fivth" onclick="mydata(5)">5</button>
+        <button class="sixth" onclick="mydata(6)">6</button>
         <button class="seventh" onclick="mydata(7)">7</button>
     </div>
 
@@ -55,25 +55,23 @@
         var userid = sessionStorage.getItem("userId");
         var token = sessionStorage.getItem("access_token");
         var pageNo = "1"
-        datatable(); 
-         function mydata(page)
-         {
-           pageNo = page
-           $("#body1").empty();
-           datatable();            
-         } 
-         function datatable()
-         {  
-            fetch("http://192.168.0.67/NetCoreAPI/api/home/users?pageNo="+ pageNo + "&pageSize=10", {
-            headers: {
-                Authorization: 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjZDgxYWUwMC1iOWM1LTQ3ZjYtOTgwNi05M2MxMWQ3YTlkMmIiLCJ1c2VyIjoie1widXNlcklEXCI6NzMsXCJuYW1lXCI6XCJoaW1hbnNodVwifSIsIm5iZiI6MTY0NjA0ODUwOSwiZXhwIjoxNjQ2MTM0OTA5LCJpYXQiOjE2NDYwNDg1MDl9.bHow07dN6JB_JPTIJgNCCm9byAQhAor_ZwQAhMDOO0w",
-            }
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data.data.users)
-                data.data.users.forEach((user) => {
-                    $("#body1").append(`    
+        datatable();
+        function mydata(page) {
+            pageNo = page
+            $("#body1").empty();
+            datatable();
+        }
+        function datatable() {
+            fetch("http://192.168.0.67/NetCoreAPI/api/home/users?pageNo=" + pageNo + "&pageSize=10", {
+                headers: {
+                    Authorization: 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjZDgxYWUwMC1iOWM1LTQ3ZjYtOTgwNi05M2MxMWQ3YTlkMmIiLCJ1c2VyIjoie1widXNlcklEXCI6NzMsXCJuYW1lXCI6XCJoaW1hbnNodVwifSIsIm5iZiI6MTY0NjA0ODUwOSwiZXhwIjoxNjQ2MTM0OTA5LCJpYXQiOjE2NDYwNDg1MDl9.bHow07dN6JB_JPTIJgNCCm9byAQhAor_ZwQAhMDOO0w",
+                }
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data.data.users)
+                    data.data.users.forEach((user) => {
+                        $("#body1").append(`    
                 <tr>
                     <td>${user.userID}</td>
                     <td>${user.firstName}</td>
@@ -82,10 +80,10 @@
                     <td>${user.emailID}</td>
                     <td>${user.userName}</td>  
                  </tr>
-                `)
+                `) 
+                    })
                 })
-            })
-         }      
+        }
         $('#example').tablemanager({
             firstSort: [[3, 0], [2, 0], [1, 'asc']],
             // disable: ["last"] if we want to disable the sorting in column,
@@ -102,4 +100,5 @@
 
     </script>
 </body>
+
 </html>

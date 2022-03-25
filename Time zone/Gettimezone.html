@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <script src="moment-time-zone.js"></script> -->
+<!-- <script src="moment-timezone-with-data.js"></script> --> -->
+<!-- <script src = "https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone.min.js"></script> -->
+<!-- <script src='https://cdn.jsdelivr.net/npm/moment-timezone@0.5.31/builds/moment-timezone-with-data.min.js'></script> -->
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+
+</head>
+
+<body>
+
+    <h1>JavaScript Dates</h1>
+    <h2>The getTimezone Method</h2>
+
+
+
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <p id="demo5"></p>
+    <p id="demo6"></p>
+</body>
+
+    <script>
+      
+        var MyDate = new Date();
+        console.log(MyDate);
+        document.getElementById("demo").innerHTML = MyDate;
+
+        var utc = MyDate.toUTCString();
+        console.log("utc", utc);
+        document.getElementById("demo1").innerHTML = "Time zone in utc " + utc;
+
+        // convertLocalDatetoUTCDate: function(date){
+        //     return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+        // }
+
+        //  console.log(now_utc);
+
+        var MyString = MyDate.toTimeString();
+        console.log("Time Zone", MyString);
+        document.getElementById("demo2").innerHTML = "Time Zone " + MyString;
+
+        var MyOffset = MyString.slice(9, 17);
+        console.log("offset", MyOffset);
+        document.getElementById("demo3").innerHTML = "offset " + MyOffset;
+
+        let time = MyDate.getTime();
+        console.log("Date", Date().slice(Date().indexOf("(") + 1, Date().lastIndexOf(")")));
+        document.getElementById("demo6").innerHTML = Date().slice(Date().indexOf("(") + 1, Date().lastIndexOf(")"));
+
+        let date = MyDate.getDate();
+        console.log("Date", date);
+        document.getElementById("demo4").innerHTML = "Date " + date;
+
+        let month = MyDate.getMonth();
+        console.log("month", month);
+        document.getElementById("demo4").innerHTML = "month " + month;
+
+        let Year = MyDate.getFullYear();
+        console.log("Full Year", Year);
+        document.getElementById("demo4").innerHTML = "Full Year " + Year;
+
+        let day = MyDate.getDay()
+        console.log("Day", day);
+        document.getElementById("demo5").innerHTML = "Day " + day;
+
+    </script>
+
+</body>
+
+</html>
+
+//Covert datetime by GMT offset 
+//If toUTC is true then return UTC time other wise return local time
+// var date =""
+// function convertLocalDateToUTCDate(date, toUTC) {
+//     date = new Date(date);
+//     //Local time converted to UTC
+//     console.log("Time: " + date);
+
+//     var localOffset = date.getTimezoneOffset() * 60000;
+//     var localTime = date.getTime();
+//     if (toUTC) {
+//         date = localTime + localOffset;
+//     } else {
+//         date = localTime - localOffset;
+//     }
+//     date = new Date(date);
+//     console.log("Converted time: " + date);
+
+//     return date;
+// }

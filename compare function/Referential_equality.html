@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Referential equality</title>
+</head>
+<body>
+    <p>Referential equality is useful when you'd like to compare object references, rather than their content.</p>
+</body>
+
+<script>
+    const hero1 = {
+        name: 'Batman'
+    };
+    const hero2 = {
+        name: 'Batman'
+    };
+    hero1 === hero1; // => true
+    hero1 === hero2; // => false
+
+    // hero1 === hero1 evaluates to true because both operands point to the same object instance hero1.
+    // On the other side, hero1 === hero2 evaluates to false because the operands hero1 and hero2 are different object instances.
+
+    hero1 == hero1; // => true
+    hero1 == hero2; // => false
+
+    Object.is(hero1, hero1); // => true
+    Object.is(hero1, hero2); // => false
+
+    // Interestingly hero1 and hero2 objects have the same content: both have one property name with the value 'Batman'. Still, even comparing objects of the same structure, hero1 === hero2 evaluates to false.
+</script>
+</html>

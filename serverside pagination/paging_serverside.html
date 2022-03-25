@@ -18,6 +18,11 @@
 </head>
 
 <body>
+    <div><a href="E:\synsoft\Project\Trainee-project\Trainee-project\Model PopUp\modelpopwithsidebar.html"><button class="btn btn-primary btn-lg btn-block">back
+    </button></a> 
+    <a href="E:\synsoft\Project\Trainee-project\Trainee-project\main page\index.html"><button class="btn btn-primary btn-lg btn-block">Edit
+        profile</button></a>
+    </div>
     <table id="example" class="display" width="100%" cellspacing="0">
         <thead>
             <tr>
@@ -63,7 +68,7 @@
         function datatable() {
             fetch("http://192.168.0.67/NetCoreAPI/api/home/users?pageNo=" + pageNo + "&pageSize=10", {
                 headers: {
-                    Authorization: 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzMDEzNzAyMy1kYjk4LTQxNDUtYTY1OC05NWFkODliYjZkMGYiLCJ1c2VyIjoie1widXNlcklEXCI6NzMsXCJuYW1lXCI6XCJoaW1hbnNodVwifSIsIm5iZiI6MTY0NjEzNTk0MywiZXhwIjoxNjQ2MjIyMzQzLCJpYXQiOjE2NDYxMzU5NDN9.MsgeGMTU0-Q44xoED3QzQoN16uqHQZSVief5WEN_uLY",
+                    Authorization: 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1NmVlZGI0OS1jYTY3LTQ2ZWItYjIzZS00MDY2MzFlZDBhYzQiLCJ1c2VyIjoie1widXNlcklEXCI6MzEsXCJuYW1lXCI6XCJEZWFkXCJ9IiwibmJmIjoxNjQ2OTk2MzMxLCJleHAiOjE2NDcwODI3MzEsImlhdCI6MTY0Njk5NjMzMX0.TKoNrsHfE4wEFyQxOSnxwFP6BNA9Q4XDPle7MEW4TBk",
                 }
             })
                 .then((res) => res.json())

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'
+    integrity='sha512-l7jogMOI6ZWZJEY7lREjFdQum46y2+kpp/mnbJx7O+izymO9eGjL6Y4o7cEJNBdouhVHpti2Wd79Q6aIjPwxtQ=='
+    crossorigin='anonymous'></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.9/moment-timezone-with-data.min.js'
+    integrity='sha512-eGIhkNuHmIeqQIFufEqgXWI9FkdP59ukLnUdvDU7O4vMAHQX8GXn7gqwa7Lc+pMx/6avriRS7vEUOIG0a9Z6yQ=='
+    crossorigin='anonymous'></script>
+  <style>
+    h1 {
+      color: teal;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>All countries Dropdown List</h1>
+    <p></p>
+
+    <p>
+      <select class="js-Selector"></select>
+    </p>
+
+    <ul>
+      <li style="background-color: burlywood;"><strong>UTC time:</strong> <span class="js-TimeUtc"></span></li>
+      <br>
+      <li style="background-color:lightpink;"><strong>Local time:</strong> <span class="js-TimeLocal"></span></li>
+    </ul>
+  </div>
+
+</body>
+
+<script>
+  //If you want to parse or display a moment in UTC, you can use moment.utc(). While in UTC mode, all display methods will display in UTC time instead of local time.
+
+  let dateTimeUtc = moment(Date()).utc();
+
+  // The Document method querySelector() returns the first Element within the document that matches the specified selector, or group of selectors. If no matches are found, null is returned.
+  // moment.utc().format(); // 2013-02-04T18:35:24+00:00
+  // .format is used to format the date and time.
+
+  document.querySelector(".js-TimeUtc").innerHTML = dateTimeUtc.format("ddd, DD MMM YYYY HH:mm:ss");
+
+  // Moment is a popular JavaScript library for working with dates. Moment makes it easy to add, subtract, and format dates, but, by itself, Moment is limited to working with two timezones: UTC and whatever the JavaScript runtime locale's timezone is. The moment-timezone library provides the core Moment API, plus support for IANA timezones.
+
+
+  let selectorOptions = moment.tz.names()
+    .reduce((memo, tz) => {
+      memo.push({                                // .push method is used to Add a new item to an array
+        name: tz,
+        offset: moment.tz(tz).utcOffset()        //this function returns the real offset from UTC,  it's fixed and won't change on its own.    
+      });
+      return memo;
+    }, [])
+
+    // moment.tz.names().map((tz, i) => { return 
+    //     name: tz,
+    //     offset: moment.tz(tz).utcOffset()
+    //   } })
+
+    .sort((a, b) => {
+      return a.offset - b.offset
+    })   
+    .reduce((memo, tz) => {
+      let timezone = tz.offset ? moment.tz(tz.name).format('Z') : '';
+      return memo.concat(`<option value="${tz.name}">(GMT${timezone}) ${tz.name}</option>`);
+    }, "");
+
+  document.querySelector(".js-Selector").innerHTML = selectorOptions;
+
+
+  //The addEventListener() method attaches an event handler to the specified element
+  document.querySelector(".js-Selector").addEventListener("change", e => {
+    let timestamp = dateTimeUtc.unix();              //.unix() function is used to get the number of seconds
+    let offset = moment.tz(e.target.value).utcOffset() * 60;
+    let dateTimeLocal = moment.unix(timestamp + offset).utc();
+  
+  document.querySelector(".js-TimeLocal").innerHTML = dateTimeLocal.format("ddd, DD MMM YYYY HH:mm:ss");
+  });
+
+  document.querySelector(".js-Selector").value = "Asia/Kolkata";
+
+  let event = new Event("change");
+  document.querySelector(".js-Selector").dispatchEvent(event);
+
+</script>
+
+</html>

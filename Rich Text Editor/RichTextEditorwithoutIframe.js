@@ -1,0 +1,27 @@
+
+//jquery for rich text editor
+var colorPalette = ['000000', 'FF9966', '6699FF', '99FF66', 'CC0000', '00CC00', '0000CC', '333333', '0066FF', 'FFFFFF'];
+  var forePalette = $('.fore-palette');
+  var backPalette = $('.back-palette');
+
+  for (var i = 0; i < colorPalette.length; i++) {
+    forePalette.append('<a href="#" data-command="forecolor" data-value="' + '#' + colorPalette[i] + '" style="background-color:' + '#' + colorPalette[i] + ';" class="palette-item"></a>');
+    backPalette.append('<a href="#" data-command="backcolor" data-value="' + '#' + colorPalette[i] + '" style="background-color:' + '#' + colorPalette[i] + ';" class="palette-item"></a>');
+  }
+
+  $('.toolbar a').click(function (e) {
+    var command = $(this).data('command');
+    if (command == 'h1' || command == 'h2' || command == 'p') {
+      document.execCommand('formatBlock', false, command);
+    }
+    if (command == 'forecolor' || command == 'backcolor') {
+      document.execCommand($(this).data('command'), false, $(this).data('value'));
+    }
+    if (command == 'createlink' || command == 'insertimage') {
+      url = prompt('Enter the link here: ', 'http:\/\/'); document.execCommand($(this).data('command'), false, url);
+    }
+    else document.execCommand($(this).data('command'), false, null);
+  });
+
+  // .data() method allows us to attach data of any type to DOM elements in a way that is safe from circular references and therefore from memory leaks.
+  //     https://www.codegrepper.com/code-examples/javascript/this.data+jquery {for example}.

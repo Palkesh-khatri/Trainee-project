@@ -49,12 +49,6 @@ $(document).ready(function () {
         },
     });
 
-
-
-
-
-
-
     if (sessionStorage.getItem("access_token") == null) {
         window.location.href = "login.html";
     } 
@@ -81,10 +75,7 @@ $(document).ready(function () {
                 $("#lname").val(obj.data.lastName);
                 $("#phone").val(obj.data.mobileNo);
                 $("#email").val(obj.data.emailID);
-
-
-
-
+                $("#username").val(obj.data.userName);
 
                 // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- - > here you can proceed to get the data  
             },
